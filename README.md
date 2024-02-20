@@ -11,3 +11,12 @@ Then track csv files with:<br/>
 
 Finally to download the dataset:<br/> 
 `curl 'https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD` > MVCollisions.csv
+
+Using head on the file resulted in:
+[img](https://imgur.com/R7dX9t2)
+
+next I created a file with all of the on streets of the datasets:
+`awk -F ',' '{print $8}' MVCollisions.csv > streets.csv`
+
+Another file I created is the a file with all of the date and location data for each collision.
+`awk -F ',' '{print $1, $7}' MVCollision.csv > date_location.csv`

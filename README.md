@@ -10,4 +10,4 @@ Then track csv files with:<br/>
 `git lfs track "*.csv"`
 
 Finally to download the dataset:<br/> 
-`curl 'https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD`
+`curl 'https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD` > MVCollisions.csv

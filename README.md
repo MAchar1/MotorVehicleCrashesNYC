@@ -20,3 +20,8 @@ next I created a file with all of the on streets of the datasets:
 
 Another file I created is the a file with all of the date and location data for each collision.
 `awk -F ',' '{print $1, $7}' MVCollision.csv > date_location.csv`
+
+
+## HW 2: Hadoop
+
+In order to use Hadoop and answer the hypothesis, I changed it slightly. While still about the paredo principle, my new hypthosis is that 20% of the streets will contain 80% of the casualities of motor vehicle accidents in NYC. Casualties being defined as deaths or injuries resulting from the accident. 

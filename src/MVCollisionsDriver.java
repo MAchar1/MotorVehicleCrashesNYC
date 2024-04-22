@@ -15,7 +15,7 @@ public class MVCollisionsDriver {
 
         // Specify data type of output key and value
         jobConf.setOutputKeyClass(Text.class);
-        jobConf.setOutputValueClass(DoubleWritable.class);
+        jobConf.setOutputValueClass(IntWritable.class);
 
         // Specify names of Mapper and Reducer class
         jobConf.setMapperClass(MVCollisionsMapper.class);

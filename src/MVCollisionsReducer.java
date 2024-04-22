@@ -10,18 +10,18 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class MVCollisionsReducer extends MapReduceBase implements Reducer<Text, DoubleWritable, Text, DoubleWritable> {
+public class MVCollisionsReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
     @Override
-    public void reduce(Text key, Iterator<DoubleWritable> values, OutputCollector<Text, DoubleWritable> output,
+    public void reduce(Text key, Iterator<IntWritable> values, OutputCollector<Text, IntWritable> output,
                        Reporter reporter) throws IOException {
-        double totalCasualties = 0;
+        int totalCasualties = 0;
         while (values.hasNext()) {
-            DoubleWritable value = values.next();
+            IntWritable value = values.next();
             System.out.println("value for " + key + " is " + value.get());
             totalCasualties += value.get();
         }
 
-        output.collect(key, new DoubleWritable(totalCasualties));
+        output.collect(key, new IntWritable(totalCasualties));
 
     }
 }

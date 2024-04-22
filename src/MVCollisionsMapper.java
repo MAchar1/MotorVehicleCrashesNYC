@@ -10,15 +10,15 @@ import org.apache.hadoop.mapred.Reporter;
 import java.io.IOException;
 
 public class MVCollisionsMapper extends MapReduceBase implements Mapper<LongWritable,
-        Text, Text, DoubleWritable> {
+        Text, Text, IntWritable> {
     @Override
-    public void map(LongWritable key, Text value, OutputCollector<Text, DoubleWritable> output,
+    public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output,
                     Reporter reporter) throws IOException {
         String row = value.toString();
         String[] data = row.split(",");
         String streetName = "N/A";
-        double injured = 0;
-        double deaths = 0;
+        int injured = 0;
+        int deaths = 0;
         if (!data[8].isEmpty()) {
             streetName = data[8];
             System.out.println("ON STREET: " + streetName);
@@ -26,23 +26,23 @@ public class MVCollisionsMapper extends MapReduceBase implements Mapper<LongWrit
             // (pedestrians, cyclists, and motorists)
             // to get total injured
             System.out.println("Ped Injured: " + data[12]);
-            injured = Double.parseDouble(data[12].trim()) + Double.parseDouble(data[14]) + Double.parseDouble(data[16]);
+            injured = Integer.parseInt(data[12].trim()) + Integer.parseInt(data[14]) + Integer.parseInt(data[16]);
             // Here we do the same as above, with deaths
-            deaths = Double.parseDouble(data[13]) + Double.parseDouble(data[15]) + Double.parseDouble(data[17]);
+            deaths = Integer.parseInt(data[13]) + Integer.parseInt(data[15]) + Integer.parseInt(data[17]);
         } else if (!data[9].isEmpty()) {
             streetName = data[9];
             System.out.println("OFF STREET: " + streetName);
             // Same as above but this is to catch when there is no ON STREET GIVEN
             System.out.println(data[12]);
-            injured = Double.parseDouble(data[12]) + Double.parseDouble(data[14]) + Double.parseDouble(data[16]);
-            deaths = Double.parseDouble(data[13]) + Double.parseDouble(data[15]) + Double.parseDouble(data[17]);
+            injured = Integer.parseInt(data[12]) + Integer.parseInt(data[14]) + Integer.parseInt(data[16]);
+            deaths = Integer.parseInt(data[13]) + Integer.parseInt(data[15]) + Integer.parseInt(data[17]);
         }
 
         System.out.println("streetName: " + streetName);
-        double casualties = injured + deaths;
+        int casualties = injured + deaths;
         System.out.println("Casualties: " + casualties);
 
-        output.collect(new Text(streetName), new DoubleWritable(casualties));
+        output.collect(new Text(streetName), new IntWritable(casualties));
         System.out.println("done");
 
     }

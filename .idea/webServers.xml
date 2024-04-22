@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e41d8f4e-8ffa-44ff-8922-f194511ea6a0" name="ITECLAB">
+        <fileTransfer accessType="SFTP" host="172.20.0.144" port="22" sshConfigId="bb212ad3-4492-4b00-8ee4-081c7129deda" sshConfig="data@172.20.0.144:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
